@@ -1,15 +1,27 @@
 import React from 'react';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import MenuItem from 'material-ui/MenuItem';
+// import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+// import AppBar from 'material-ui/Appbar';
+// import MenuItem from 'material-ui/MenuItem';
+import Search from './Search.jsx'
+import styles from '../styles/nav.css'
 
 const Nav = () => {
   return (
-    <Toolbar style={{backgroundColor: '#616161', margin: 0, height: '100px', borderBottom: '8px solid #00B0FF' }}>
-      <ToolbarGroup>
-        <ToolbarTitle text='Scrubd' style={{ fontSize: '2.5em', color: 'white' }} />
-      </ToolbarGroup>
-    </Toolbar>
+    <nav className={styles.nav}>
+      <div className={styles.navbar}>
+        <div className={styles.nav_item} onClick={() => console.log('lets go')}>LOGO</div>       
+        <div className={styles.nav_item}>Home</div>       
+        <div className={styles.nav_item}>Add Video</div>       
+        <div className={styles.search_box}>
+          <Search />
+        </div>       
+        <div className={styles.nav_item}>Logout</div>
+      </div>
+    </nav>
   );
 };
 
 export default Nav;
+
+
+     

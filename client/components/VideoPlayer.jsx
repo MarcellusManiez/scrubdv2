@@ -10,12 +10,12 @@ class VideoPlayer extends React.Component {
 
     const opts = {
       playerVars: {
-        autoplay: 1
+        autoplay: 0
       }
     };
 
     return (
-      <YouTube videoId={'dQw4w9WgXcQ'} opts={opts} />
+      <YouTube videoId={'RleN-6uMF04'} opts={opts} />
     );
   }
 }
