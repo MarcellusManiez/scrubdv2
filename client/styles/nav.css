@@ -1,10 +1,10 @@
 .nav {
   width: 100vw;
-  min-height: 50px;
-  background-color: #4D4A4A
-  ;
+  height: 50px;
+  background-color: #4D4A4A;
   
   position: fixed;
+  top: 0;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   z-index: 1;
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
 
-  min-height: inherit;
+  height: inherit;
   margin-left: 40px;
 
   color: white;
@@ -33,7 +33,7 @@
   justify-content: center;
 
   border-left: solid black 2px;
-  min-height: inherit;
+  height: inherit;
   cursor: pointer
 }
 
@@ -49,9 +49,8 @@
 
 .search_box {
   flex-grow: 3;
-  padding: 10px;
   border-left: solid black 2px;
-  min-height: inherit;
+  height: inherit;
   
   display: flex;
   align-items: center;
@@ -60,15 +59,12 @@
 
 .searchBar {
   min-width: 90%;
-  
+  line-height: 1.75em;
   border-radius: 3px;
   border-style:none;
 
 }
 
-input {
-  line-height: 3em;
-}
 
 /*.brand {
   flex-grow: 2;
