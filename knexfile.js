@@ -3,7 +3,7 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: 'ScrubdV2_dev'
+      database: 'scrubdv2_dev'
     },
     pool: {
       min: 2,
@@ -17,7 +17,7 @@ module.exports = {
   test: {
     client: 'pg',
     connection: {
-      database: 'ScrubdV2_test'
+      database: 'scrubdv2_test'
     },
     pool: {
       min: 2,
