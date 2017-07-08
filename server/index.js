@@ -15,8 +15,8 @@ if (process.env.NODE_ENV !== 'test') {
   var app = express()
 
   // Parse incoming request bodies as JSON
+  app.use( require('body-parser').urlencoded({extended:true}))
   app.use( require('body-parser').json() )
-
   // Mount our main router
   app.use('/', router)
   app.use(express.static(Path.join(__dirname, '../dist')))
