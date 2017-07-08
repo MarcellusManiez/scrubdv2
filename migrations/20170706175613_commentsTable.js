@@ -14,3 +14,6 @@ exports.down = function(knex, Promise) {
 };
 
 
+//TODO: add column to reference 'video id'
+
+
