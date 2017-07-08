@@ -8,15 +8,17 @@ import styles from '../styles/nav.css'
 const Nav = () => {
   return (
     <nav className={styles.nav}>
-      <div className={styles.navbar}>
-        <div className={styles.nav_item} onClick={() => console.log('lets go')}>LOGO</div>       
-        <div className={styles.nav_item}>Home</div>       
-        <div className={styles.nav_item}>Add Video</div>       
-        <div className={styles.search_box}>
+      <ul className={styles.navbar}>
+        <li className={styles.nav_item} onClick={() => console.log('lets go')}>LOGO</li>       
+        <li className={styles.nav_item}>Home</li>       
+        <li className={styles.nav_item}>
+          Add Video
+        </li>
+        <li className={styles.search_box}>
           <Search />
-        </div>       
-        <div className={styles.nav_item}>Logout</div>
-      </div>
+        </li>       
+        <li className={styles.nav_item}>Logout</li>
+      </ul>
     </nav>
   );
 };
