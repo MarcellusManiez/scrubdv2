@@ -47,7 +47,7 @@
 }
 
 
-.search_box {
+.video_input_box {
   flex-grow: 3;
   border-left: solid black 2px;
   height: inherit;
@@ -57,7 +57,7 @@
   justify-content: center;
 }
 
-.searchBar {
+.video_input_Bar {
   min-width: 90%;
   line-height: 1.75em;
   border-radius: 3px;
@@ -90,7 +90,7 @@
   border-bottom: none
 }
 
-.search {
+.video_input {
   flex-grow: 3;
   background-color: blue;
 }*/
