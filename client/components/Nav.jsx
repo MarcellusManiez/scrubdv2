@@ -7,17 +7,20 @@ import styles from '../styles/nav.css'
 
 const Nav = () => {
   return (
-    <nav className={styles.nav}>
-      <ul className={styles.navbar}>
-        <li className={styles.nav_item} onClick={() => console.log('lets go')}>LOGO</li>       
-        <li className={styles.nav_item}>Home</li>       
-        <li className={styles.video_input_box}>
-          <VideoInput />
-        </li>       
-        <li className={styles.nav_item}>Logout</li>
-      </ul>
-    </nav>
+    <header>
+      <nav className={styles.nav}>
+        <ul className={styles.navbar}>
+          <li className={styles.nav_item} onClick={() => console.log('lets go')}>LOGO</li>       
+          <li className={styles.nav_item}>Home</li>       
+          <li className={styles.video_input_box}>
+            <VideoInput />
+          </li>       
+          <li className={styles.nav_item}>Logout</li>
+        </ul>
+      </nav>
+    </header>
   );
+  // return null;
 };
 
 export default Nav;
