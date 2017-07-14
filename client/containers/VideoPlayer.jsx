@@ -57,12 +57,16 @@ class VideoPlayer extends React.Component {
               videoId={this.state.currentVideo.video_url} 
               opts={opts} 
               onReady={ this.createPlayer } 
-              onPlay={ () => { this.setState({playing: true}), setInterval( _ => this.checkTimes(), 1000); } }
-              onPause={ () => { this.setState({playing: false}), this.checkTimes(); } }
+              onPlay={ () => { 
+                this.setState({playing: true}), 
+                (( ) => { handle = setInterval( _ => this.checkTimes(), 1000) })(); 
+                } 
+              }
+              onPause={ () => { this.setState({playing: false}), clearInterval(handle) } }
             />
-            <button className={styles.click_button} onClick={ this.getPlayerTime }>CLICK ME</button>
+            <button className={styles.click_button} onClick={ ()=>{clearInterval() } }>CLICK ME</button>
             <Sparklines data={sampleData} style={{width:'700px', height: '60px'}}>
-              <SparklinesBars style={{ fill: "#41c3f9" }} />
+              <SparklinesLine style={{ fill: "red" }} />
             </Sparklines>
           </div>
         </div>
@@ -72,7 +76,6 @@ class VideoPlayer extends React.Component {
         </div>
       )
   }
-
 
   createPlayer (e) {
     this.setState({
@@ -112,3 +115,4 @@ class VideoPlayer extends React.Component {
 export default VideoPlayer;
 
  
+let handle = 0;
