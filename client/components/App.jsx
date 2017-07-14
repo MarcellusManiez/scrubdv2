@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Nav from './Nav.jsx';
-import VideoPlayer from './VideoPlayer.jsx';
+import MainRoutes from './MainRoutes.jsx'
+import styles from '../styles/main.css'
 
-class App extends React.Component {
-  render () {
-    return (
-      <div>
-        <Nav/>
-        <VideoPlayer />
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <div>
+      <Nav />
+      <MainRoutes className={styles.container}/>
+    </div>
+  );
 }
 
 export default App;
         
-        
+
