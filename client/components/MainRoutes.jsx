@@ -4,19 +4,17 @@ import Home from '../containers/Home.jsx'
 import VideoPlayer from '../containers/VideoPlayer.jsx'
 import PrivateRoute from './PrivateRoute.jsx' 
 import Login from '../containers/Login.jsx' 
-import styles from '../styles/main.css'
 
 const MainRoutes = () => {
   return (
-  <main className={styles.container}>
+  <main>
     <Router>
       <Switch>
         <Route path='/login' component={Login}/>
         <PrivateRoute exact path='/' component={Home}/>
         <PrivateRoute exact path='/home' component={Home}/>
-        <PrivateRoute exact path='/player' component={VideoPlayer}/>
+        <PrivateRoute path='/player/:video_id' component={VideoPlayer}/>
       </Switch>
-
     </Router>
   </main>
   );
