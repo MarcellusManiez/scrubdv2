@@ -5,3 +5,11 @@
   padding: 0px;
   font-family: 'Roboto', sans-serif
 }
+
+ .container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  height: 100vh;
+} 
