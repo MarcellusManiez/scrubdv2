@@ -25,18 +25,16 @@ class VideoPlayer extends React.Component {
 
   componentDidMount () {
     const video_id = this.props.match.params.video_id
-     
-    //  axios.get(`/api/getVideo/${this.props.match.params.video_id}`, {
-    //    params: {
-    //      what: 'is going on'
-    //    }
-    //  }).then( res => console.log(res) )
  
-     
-    //  axios.get(`/api/getVideoComments/${this.props.match.params.video_id}`).then( res => console.log(res) )
     Promise.all( [this.getVideoInfoById(), this.getVideoComments()] )
-    .then( results => console.log(results[0], results[1]) );
+    .then( results => {
+      const video = results[0].data
 
+      this.setState( { 
+        currentVideo : video,
+        comments : results[1] 
+      })
+    });
   }
 
   render () {

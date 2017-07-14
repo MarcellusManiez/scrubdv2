@@ -48,12 +48,12 @@ class VideoInput extends Component {
       const isoDuration = videos.data.items[0].contentDetails.duration;
       const videoDurationInSeconds = convertISO8601ToSeconds(isoDuration)
       
-      
+      console.log(localStorage.getItem('user'))
       const videoData = {
         user_name : localStorage.getItem('user'),
         video_title : video.title,
         video_url : videoId,
-        thumbnail_url : video.thumbnail_url
+        thumbnail_url : video.thumbnails.default.url
       }
       
       videoData.video_duration =  videoDurationInSeconds;
