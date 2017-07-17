@@ -22,35 +22,6 @@ const MainRoutes = () => {
 
 
 export default MainRoutes;
-
-
-// import React from 'react'
-// import ReactDOM from 'react-dom'
-// import axios from 'axios';
-// import LandingPage from './Landing.jsx' 
-// import Events from './Events.jsx' 
-// import EventDetail from './EventDetail.jsx' 
-// import PrivateRoute from './PrivateRoute.jsx' 
-// import { BrowserRouter as Router, Route, Link, Redirect, Switch} from 'react-router-dom';
-
-// class Routes extends React.Component {
-
-//   render () {
-
-//     return (
-//       <Router>
-//         <Switch>  
-//           <Route exact path='/' component={LandingPage}/>
-//           <PrivateRoute exact path='/events' component={Events}/>
-//           <PrivateRoute path='/events/:id' component={EventDetail}/>
-//         </Switch>
-//      </Router>
-//     )
-//   }
-// }
-
-// export default Routes;
-
         
 
 
