@@ -21,7 +21,7 @@ class VideoInput extends Component {
     return (
       <SearchBar
         value={this.state.term}
-        hintText="Add a YouTube Video URL!"
+        hintText="Add a YouTube Video URL..."
         searchIcon={false}
         onChange={ () => this.setState({ term: event.target.value }) }
         onRequestSearch={ this.searchYouTube }
@@ -35,20 +35,22 @@ class VideoInput extends Component {
   }
   
   searchYouTube () {
-    const videoId = this.state.term.slice(32);
-
+    let videoId = getVideoIdFromUrl(this.state.term)
+    this.setState( {term : ''} )
+    
     axios.get('https://www.googleapis.com/youtube/v3/videos', {
       params: {
-        part: 'contentDetails,snippet',
         id: videoId,
-        key: 'AIzaSyAu2IFGsMXjYy7jk_7HA92KDLvRdStIxVM'
+        part: 'snippet,contentDetails',
+        key: YOUTUBE_KEY
       }
     }).then( videos => {
+      
       const video = videos.data.items[0].snippet
       const isoDuration = videos.data.items[0].contentDetails.duration;
       const videoDurationInSeconds = convertISO8601ToSeconds(isoDuration)
       
-      console.log(localStorage.getItem('user'))
+      
       const videoData = {
         user_name : localStorage.getItem('user'),
         video_title : video.title,
@@ -85,4 +87,18 @@ export default VideoInput;
   }
 
   return (totalseconds);
+}
+
+
+
+
+function getVideoIdFromUrl (string) {
+  let id = string.split('v=')[1];
+  const ampersandPosition = id.indexOf('&');
+    
+  if(ampersandPosition != -1) {
+    id = id.substring(0, ampersandPosition);
+  }
+  
+  return id;
 }
