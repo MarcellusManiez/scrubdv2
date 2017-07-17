@@ -36,7 +36,7 @@ module.exports = {
     
     db('comments').select('message', 'video_id').where( { video_id } )
       .join('users', 'users.user_id', '=', 'comments.user_id')
-      .select('users.user_name', 'comments.comment_id', 'comments.message')
+      .select('users.user_name', 'comments.comment_id', 'comments.message', 'comments.comment_timestamp')
       .then( comments => {
         res.status(200).json(comments)
       })

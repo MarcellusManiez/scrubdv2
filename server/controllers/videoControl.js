@@ -35,6 +35,10 @@ module.exports = {
     db('videos').select()
       .where( { video_id } )
       .then( video => {
+        if ( !video.length ) {
+          res.sendStatus(400)
+        }
+        
         res.json(video[0])
       })  
     }
