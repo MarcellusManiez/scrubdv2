@@ -2,6 +2,7 @@ import React from 'react';
 import YouTube from 'react-youtube';
 import CommentGraph from '../components/Graph.jsx'
 import CommentBox from '../components/CommentBox.jsx'
+import Nav from '../components/Nav.jsx'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import styles from '../styles/video_player.css'
 import axios from 'axios';
@@ -66,7 +67,7 @@ class VideoPlayer extends React.Component {
     })
   }
 
-  checkForCommentsAtCurrentTime() {
+    checkForCommentsAtCurrentTime() {
       let time = Math.round(this.getPlayerTime()) + '.00'
       
       if ( this.state.commentsByTimestamp[time] ) {
@@ -101,6 +102,8 @@ class VideoPlayer extends React.Component {
   render () {
    return (this.state.currentVideo && this.state.commentGraphData) ? 
     (
+      <div>
+        <Nav />
       <div className={styles.player_page}>
         <div className={styles.player_container}>
           <YouTube 
@@ -114,10 +117,16 @@ class VideoPlayer extends React.Component {
           <CommentBox getPlayerTime={this.getPlayerTime} currentComment={this.state.currentComment} video_id={this.props.match.params.video_id}/>
         </div>
       </div>
+
+      </div>
     ) : 
     (
+      <div>
+        <Nav />
       <div className={styles.player_page}>
         Loading video...
+      </div>
+      
       </div>
     )
   }
