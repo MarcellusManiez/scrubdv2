@@ -7,16 +7,16 @@ import Login from '../containers/Login.jsx'
 
 const MainRoutes = () => {
   return (
-  <main>
-    <Router>
-      <Switch>
-        <Route path='/login' component={Login}/>
-        <PrivateRoute exact path='/' component={Home}/>
-        <PrivateRoute exact path='/home' component={Home}/>
-        <PrivateRoute path='/player/:video_id' component={VideoPlayer}/>
-      </Switch>
-    </Router>
-  </main>
+    <main>
+      <Router>
+        <Switch>
+          <Route path='/login' component={Login}/>
+          <PrivateRoute exact path='/' component={Home}/>
+          <PrivateRoute exact path='/home' component={Home}/>
+          <PrivateRoute path='/player/:video_id' component={VideoPlayer}/>
+        </Switch>
+      </Router>
+    </main>
   );
 };
 
