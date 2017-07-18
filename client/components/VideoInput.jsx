@@ -3,7 +3,8 @@ import AutoComplete from 'material-ui/AutoComplete';
 import SearchBar from 'material-ui-search-bar'
 import axios from 'axios'; 
 import YOUTUBE_KEY from '../youtube_key.js'
-import parse from 'date-fns/parse'
+import RaisedButton from 'material-ui/RaisedButton'
+import { convertISO8601ToSeconds, getVideoIdFromUrl } from '../helperFunctions.js'
 
 class VideoInput extends Component {
   constructor(props) {
@@ -16,25 +17,8 @@ class VideoInput extends Component {
     this.searchYouTube = this.searchYouTube.bind(this)
   }
 
-
-  render () {
-    return (
-      <SearchBar
-        value={this.state.term}
-        hintText="Add a YouTube Video URL..."
-        searchIcon={false}
-        onChange={ () => this.setState({ term: event.target.value }) }
-        onRequestSearch={ this.searchYouTube }
-        style={{
-          margin: '0 auto',
-          maxHeight: '80%',
-          minWidth: '90%'
-        }}
-      />
-    );
-  }
-  
   searchYouTube () {
+    
     let videoId = getVideoIdFromUrl(this.state.term)
     this.setState( {term : ''} )
     
@@ -63,42 +47,36 @@ class VideoInput extends Component {
       axios.post('/api/addVideo', {
         data: videoData
       })
+      .then( _ => this.props.toggleModal() )
     })
   }
+
+ 
+ 
+  render () {
+    
+    return (
+      <div style={this.props.style}>
+        <SearchBar
+          value={this.state.term}
+          hintText="Add a YouTube Video URL..."
+          searchIcon={false}
+          onChange={ () => this.setState({ term: event.target.value }) }
+          onRequestSearch={ this.searchYouTube }
+          style={{
+            margin: '0 auto',
+            maxHeight: '80%',
+            minWidth: '90%'
+          }}
+        />
+        <div style={{display: 'flex'}}>
+          <RaisedButton label='Submit' onClick={ this.searchYouTube } style={{margin:'15px'}}/>
+          <RaisedButton label='Cancel' secondary={true} onClick={ this.props.toggleModal } style={{margin:'15px'}}/>
+        </div>
+      </div>
+    );
+  }
+  
 }
 
 export default VideoInput;
-  
-
-
-//TODO: move to helper function file
- 
- function convertISO8601ToSeconds(input) {
-
-  var reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
-  var hours = 0, minutes = 0, seconds = 0, totalseconds;
-
-  if (reptms.test(input)) {
-      var matches = reptms.exec(input);
-      if (matches[1]) hours = Number(matches[1]);
-      if (matches[2]) minutes = Number(matches[2]);
-      if (matches[3]) seconds = Number(matches[3]);
-      totalseconds = hours * 3600  + minutes * 60 + seconds;
-  }
-
-  return (totalseconds);
-}
-
-
-
-
-function getVideoIdFromUrl (string) {
-  let id = string.split('v=')[1];
-  const ampersandPosition = id.indexOf('&');
-    
-  if(ampersandPosition != -1) {
-    id = id.substring(0, ampersandPosition);
-  }
-  
-  return id;
-}
