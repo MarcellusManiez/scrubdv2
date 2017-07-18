@@ -70,9 +70,9 @@ class VideoPlayer extends React.Component {
       let time = Math.round(this.getPlayerTime()) + '.00'
       
       if ( this.state.commentsByTimestamp[time] ) {
-        this.setState( {
-          currentComment : this.state.commentsByTimestamp[time][0]
-        }, () => {console.log(this.state.currentComment)} )
+        this.setState( 
+          { currentComment : this.state.commentsByTimestamp[time][0] }
+        )
       }
 
       return;
@@ -111,8 +111,7 @@ class VideoPlayer extends React.Component {
             onPause={ () => clearInterval(intervalHandler) }   
           />
           <CommentGraph data={this.state.commentGraphData} />
-          {/*{renderComment(this.state.currentComment)}*/}
-          <CommentBox currentComment={this.state.currentComment}/>
+          <CommentBox getPlayerTime={this.getPlayerTime} currentComment={this.state.currentComment} video_id={this.props.match.params.video_id}/>
         </div>
       </div>
     ) : 
@@ -129,36 +128,14 @@ export default VideoPlayer;
 
  
 let intervalHandler = 0;
+
 const playerOpts = {
   playerVars: {
-    autoplay: 0
+    autoplay: 0,
+    controls: 1, 
+    rel : 0
   },
-  rel: 0,
+
   height: '426.5',
   width: '700'
 };
-
-
-const renderComment = ( comment ) => {
-  console.log('In renderComment', comment)
-  if (comment === null || comment === undefined) {
-    return (
-      <div />
-    );
-  } else {
-    return (
-      <Card style={{ width: '700px'}}>
-        <CardHeader
-          title={`${comment.user_name} @ ${comment.comment_timestamp}`}
-          subtitle={comment.message}
-          avatar="https://api.adorable.io/avatars/285/Barton Young.png"
-        />
-      </Card>   
-    )
-  } 
-}
-
-
-function showComment ( comment, data ) {
-  console.log('SHOW comment', comment)
-}
