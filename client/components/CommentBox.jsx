@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
-// import RaisedButton from 'material-ui/RaisedButton'
-// import { Menu, MenuItem } from 'material-ui/Menu'
 import { List, ListItem } from 'material-ui/List'
-// import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {indigo500} from 'material-ui/styles/colors';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
@@ -43,17 +40,17 @@ class CommentBox extends Component {
   if (e.charCode === 13) { // enter key pressed
     e.preventDefault();
     this.submitComment(this.state.term)
+    this.setState({ term: '' });
   } 
 }
 
   render () {
     const comment = this.props.currentComment
 
-    return comment === null ? 
+    return comment ? 
       (
         <List>
-          <ListItem 
-            style={styles.list_item}
+          <ListItem style={styles.list_item}
             primaryText={
               <TextField 
                 value={this.state.term} 
@@ -135,17 +132,3 @@ const styles = {
     borderRadius: '2px'
   }
 };
-
-
-{/*<div style={styles.textField_container}>
-        <TextField 
-          value={this.state.term} 
-          inputStyle={styles.textField} 
-          hintText='Comment...'
-          onChange={this.handleTextChange}
-        />
-        <RaisedButton 
-          label='Submit'
-          onTouchTap={this.submitComment}
-        />
-      </div>*/}

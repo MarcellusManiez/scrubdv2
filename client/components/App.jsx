@@ -5,7 +5,6 @@ import MainRoutes from './MainRoutes.jsx'
 const App = () => {
   return (
     <div>
-      <Nav />
       <MainRoutes/>
     </div>
   );
