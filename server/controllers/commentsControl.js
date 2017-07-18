@@ -7,9 +7,9 @@ module.exports = {
     const comment = {
       video_id: req.body.video_id,
       message: req.body.message,
-      comment_timestamp:  Math.round(Number(req.body.comment_timestamp))
+      comment_timestamp:  Math.round(Number(req.body.timestamp))
     }
-    
+
     db('users').select('user_id')
       .where( { user_name : req.body.user_name })
       .then( data => {
@@ -30,8 +30,10 @@ module.exports = {
       })
   },
 
+
+
   getVideoComments: (req, res) => {
-    //using video ID...fetch all comments for said video
+  
     const video_id = parseInt(req.params.videoId);
     
     db('comments').select('message', 'video_id').where( { video_id } )
@@ -42,14 +44,3 @@ module.exports = {
       })
   }
 };
-
-
-// knex('users')
-// .join('contacts', 'users.id', '=', 'contacts.user_id')
-// .select('users.id', 'contacts.phone')
-// Outputs:
-// select `users`.`id`, `contacts`.`phone` from `users` inner join `contacts` on `users`.`id` = `contacts`.`user_id`
-
-
-
-    
