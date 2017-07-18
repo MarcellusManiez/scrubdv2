@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import VideoInput from './VideoInput.jsx'
 import Modal from './Modal.jsx'
-// import RaisedButton from 'material-ui/RaisedButton'
+import NavButtons from './NavButtons.jsx'
 import styles from '../styles/nav.css'
 
 class Nav extends Component {
@@ -16,7 +16,6 @@ class Nav extends Component {
   }
 
   toggleModal () {
-  
     this.setState( { openModal : !this.state.openModal } )
   }
 
@@ -24,7 +23,7 @@ class Nav extends Component {
     return (
       <header>
         <Modal isOpen={this.state.openModal} toggleModal={this.toggleModal}>
-          <p>Please enter a valid YouTube URL</p>
+          <p>Please enter a valid YouTube URL...</p>
           <VideoInput
             toggleModal={this.toggleModal} 
             style={{ 
@@ -36,15 +35,8 @@ class Nav extends Component {
               flexDirection: 'column'
             }}
           />  
-        </Modal>  
-        <nav className={styles.nav}>
-          <ul className={styles.navbar}>
-            <li className={styles.nav_item} onClick={() => console.log('lets go')}>LOGO</li>       
-            <li className={styles.nav_item}>Home</li>       
-            <li className={styles.nav_item} onClick={this.toggleModal}>Add Video</li>
-            <li className={styles.nav_item}>Logout</li>
-          </ul>
-        </nav>
+        </Modal> 
+        <NavButtons toggleModal={this.toggleModal} /> 
       </header>
     );
   }
