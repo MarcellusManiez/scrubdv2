@@ -34,8 +34,20 @@
 
   border-left: solid black 2px;
   height: inherit;
-  cursor: pointer
+  cursor: pointer;
+  list-style: none;
 }
+
+.nav_item a {
+  text-decoration: none;
+  color: white
+}
+
+.nav_item a:visited {
+  text-decoration: none;
+  color: white
+}
+
 
 .logo {
   background-color: skyblue
