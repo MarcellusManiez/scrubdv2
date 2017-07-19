@@ -30,7 +30,7 @@ class VideoPlayer extends React.Component {
   componentDidMount () {
     const video_id = this.props.match.params.video_id
    
-    Promise.all( [this.getVideoInfoById(), this.getVideoComments()] )
+    axios.all( [this.getVideoInfoById(), this.getVideoComments()] )
     .then( results => {
       const video = results[0].data
       const commentsObject = {};
