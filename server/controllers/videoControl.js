@@ -41,7 +41,31 @@ module.exports = {
         
         res.json(video[0])
       })  
-    }
+    },
+
+
+  getVideosByUserId: (req, res) => {
+    const user_id = parseInt(req.params.userId);
+    
+    db('videos').select('*')
+      .where( { user_id })
+      .then ( videos => {
+        console.log('USER VIDS', videos)
+        res.json(videos)
+      })
+  },
+
+
+  getAllVideos: (req, res) => {
+    const user_id = parseInt(req.params.userId);
+    
+    db('videos').select('*')
+      .whereNot( { user_id} )
+      .then ( videos => {
+        console.log('OTHER VIDEOS',videos)
+        res.json(videos)
+      })
+  }
 
 };
 
