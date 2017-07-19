@@ -3,18 +3,15 @@ import React, { Component } from 'react';
 
 const Modal = ( { isOpen, children } ) => {
   return isOpen ? 
-    
-    (<div style={styles.modal_overlay}>
-      <div style={styles.modal_center_box}>
-        {
-          children
-        }
-      </div>
-    </div>)
-     :
     (
-      null
+    <div style={styles.modal_overlay}>
+      <div style={styles.modal_center_box}>
+        { children }
+      </div>
+    </div>
     )
+     :
+    null
 }
 
 export default Modal;
@@ -46,3 +43,5 @@ const styles = {
     background: '#fff'
   }
 }
+    
+      

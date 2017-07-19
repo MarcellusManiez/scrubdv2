@@ -34,16 +34,15 @@ class VideoInput extends Component {
       const isoDuration = videos.data.items[0].contentDetails.duration;
       const videoDurationInSeconds = convertISO8601ToSeconds(isoDuration)
       
-      
       const videoData = {
         user_name : localStorage.getItem('user'),
         video_title : video.title,
         video_url : videoId,
-        thumbnail_url : video.thumbnails.default.url
+        thumbnail_url : video.thumbnails.high.url
       }
       
       videoData.video_duration =  videoDurationInSeconds;
-
+      
       axios.post('/api/addVideo', {
         data: videoData
       })
@@ -80,3 +79,4 @@ class VideoInput extends Component {
 }
 
 export default VideoInput;
+      

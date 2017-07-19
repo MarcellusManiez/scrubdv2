@@ -47,7 +47,7 @@ class CommentBox extends Component {
   render () {
     const comment = this.props.currentComment
 
-    return comment ? 
+    return comment === null ? 
       (
         <List>
           <ListItem style={styles.list_item}
