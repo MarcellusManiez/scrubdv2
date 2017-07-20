@@ -22,7 +22,7 @@ module.exports = {
           .returning([ 'comment_id','user_id', 'video_id', 'message', 'comment_timestamp'])
           .insert(comment)
           .then( results => 
-            res.status(201).json(results)
+            res.status(201).json(results[0])
           )
           .catch( err => {
             console.error(err);

@@ -23,6 +23,7 @@ class VideoPlayer extends React.Component {
     this.getPlayerTime = this.getPlayerTime.bind(this)
     this.getVideoInfoById = this.getVideoInfoById.bind(this)
     this.getVideoComments = this.getVideoComments.bind(this)
+    this.addComment = this.addComment.bind(this)
     this.checkForCommentsAtCurrentTime = this.checkForCommentsAtCurrentTime.bind(this)
   }
 
@@ -65,6 +66,19 @@ class VideoPlayer extends React.Component {
     this.setState({
       player: e.target
     })
+  }
+
+  addComment ( comment ) {
+    let commentCopy = this.state.commentGraphData.slice()
+    let timestamp = parseInt(comment.data.comment_timestamp);
+    comment.data.user_name = localStorage.getItem('user')
+    console.log(comment.data)
+    commentCopy[timestamp] = (commentCopy[timestamp] + 1) || 1;
+  
+    this.setState( {
+      commentGraphData: commentCopy,
+      currentComment: comment.data
+     }) 
   }
 
     checkForCommentsAtCurrentTime() {
@@ -114,7 +128,12 @@ class VideoPlayer extends React.Component {
             onPause={ () => clearInterval(intervalHandler) }   
           />
           <CommentGraph data={this.state.commentGraphData} />
-          <CommentBox getPlayerTime={this.getPlayerTime} currentComment={this.state.currentComment} video_id={this.props.match.params.video_id}/>
+          <CommentBox 
+            getPlayerTime={this.getPlayerTime} 
+            currentComment={this.state.currentComment} 
+            video_id={this.props.match.params.video_id}
+            addComment={this.addComment}
+          />
         </div>
       </div>
 

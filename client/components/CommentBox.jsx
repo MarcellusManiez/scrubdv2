@@ -27,6 +27,7 @@ class CommentBox extends Component {
     const video_id = this.props.video_id
     
     axios.post('/api/addComment', { user_name, timestamp, message, video_id })
+      .then( c => this.props.addComment(c))
   }
 
   handleTextChange (e) {
@@ -37,16 +38,16 @@ class CommentBox extends Component {
   }
 
   onKeyPress(e) {
-  if (e.charCode === 13) { // enter key pressed
-    e.preventDefault();
-    this.submitComment(this.state.term)
-    this.setState({ term: '' });
-  } 
-}
+    if (e.charCode === 13) { // enter key pressed
+      e.preventDefault();
+      this.submitComment(this.state.term)
+      this.setState({ term: '' });
+    } 
+  }
 
   render () {
     const comment = this.props.currentComment
-
+    
     return comment === null ? 
       (
         <List>
