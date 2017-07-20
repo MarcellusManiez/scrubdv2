@@ -35,7 +35,18 @@ class Home extends Component {
       <div>
         <Nav />
         <div style={{marginTop: 65}}>
+          <div 
+            style={{
+              display:'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              backgroundColor: 'gray',
+              minHeight: 200
+              }}>
+              This is your profile information!
+          </div>
           <VideoList description={'Your videos...'} videos={this.state.userVideos}/>
+          <VideoList description={'All videos...'} videos={this.state.allVideos}/>
         </div>
       </div>
     );

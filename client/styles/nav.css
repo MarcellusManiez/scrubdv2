@@ -74,35 +74,4 @@
   line-height: 1.75em;
   border-radius: 3px;
   border-style:none;
-
 }
-
-
-/*.brand {
-  flex-grow: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  margin-left: 40px;
-  width: 100px;
-  color: white;
-  background-color: skyblue;
-}
-
-.navbar {
-  display: flex;
-  border: red solid 1px;
-}
-
-.nav_item {
-  flex-grow: 1;
-  border: solid black 2px;
-  background-color: red;
-  border-bottom: none
-}
-
-.video_input {
-  flex-grow: 3;
-  background-color: blue;
-}*/
