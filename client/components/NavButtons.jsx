@@ -1,9 +1,10 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 import styles from '../styles/nav.css'
+// import Login from '../containers/Login.jsx'
 
-const NavButtons = ( {toggleModal} ) => {
+const NavButtons = ( { toggleModal, logout, history } ) => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.navbar}>
@@ -14,8 +15,8 @@ const NavButtons = ( {toggleModal} ) => {
           <Link to='/home'>Home</Link>
         </li>       
         <li className={styles.nav_item} onClick={toggleModal}>Add Video</li>
-        <li className={styles.nav_item}>
-          <Link to='/login'>Logout</Link>
+        <li className={styles.nav_item} onClick={()=> { logout(); history.push('/login')} }>
+          LOGOUT
         </li>
       </ul>
     </nav>
@@ -23,4 +24,5 @@ const NavButtons = ( {toggleModal} ) => {
 }
 
 
-export default NavButtons
+export default withRouter(NavButtons)
+          // <Link onClick={()=> logout()} to='/login'>Logout</Link>

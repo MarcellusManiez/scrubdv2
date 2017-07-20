@@ -7,18 +7,20 @@ import Login from '../containers/Login.jsx'
 import Nav from '../components/Nav.jsx'
 
 const MainRoutes = () => {
+
+  
   return (
-    <main>
       <Router>
-        <Switch>
-          <Route path='/login' component={Login}/>
-          <PrivateRoute exact path='/' component={Home}/>
-          <PrivateRoute exact path='/home' component={Home}/>
-          <PrivateRoute path='/player/:video_id' component={VideoPlayer}/>
-          <Route component={Home} />
-        </Switch>
+        <main>
+          <Switch>
+            <Route path='/login' component={Login}/>
+            <Route exact path='/' component={Home} user={'colby'}/>
+            <PrivateRoute exact path='/home' component={Home}/>
+            <PrivateRoute path='/player/:video_id' component={VideoPlayer}/>
+            <Route component={Home} />
+          </Switch>
+        </main>
       </Router>
-    </main>
   );
 };
 
