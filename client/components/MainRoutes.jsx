@@ -14,7 +14,7 @@ const MainRoutes = () => {
         <main>
           <Switch>
             <Route path='/login' component={Login}/>
-            <Route exact path='/' component={Home} user={'colby'}/>
+            <Route exact path='/' component={Home}/>
             <PrivateRoute exact path='/home' component={Home}/>
             <PrivateRoute path='/player/:video_id' component={VideoPlayer}/>
             <Route component={Home} />

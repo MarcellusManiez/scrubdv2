@@ -46,14 +46,7 @@ class Home extends Component {
       <div>
         <Nav addVideoToState={this.addVideoToState}/>
         <div style={{marginTop: 65}}>
-          <div 
-            style={{
-              display:'flex', 
-              justifyContent: 'center', 
-              alignItems: 'center', 
-              backgroundColor: 'gray',
-              minHeight: 200
-              }}>
+          <div style={profile}>
               This is your profile information!
           </div>
           <VideoList description={'Your videos...'} videos={this.state.userVideos}/>
@@ -76,3 +69,12 @@ export default Home;
   const getAllVidoes = (id) => {
     return axios.get(`/api/getAllVideos/${id}`)
   }
+
+
+  const profile = {
+    display:'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: 'gray',
+    minHeight: 200
+    }
