@@ -13,6 +13,7 @@ class Home extends Component {
       allVideos : []
     }
 
+    this.addVideoToState = this.addVideoToState.bind(this)
   }
 
   componentDidMount () {
@@ -28,12 +29,22 @@ class Home extends Component {
       )
   }
 
+
+  addVideoToState (video) {
+    const updatedVideos = this.state.userVideos.slice();
+    updatedVideos.push(video);
+    
+    this.setState({
+      userVideos: updatedVideos
+    })
+  }
+
   render () {
     const user = localStorage.getItem('user')
 
     return (
       <div>
-        <Nav />
+        <Nav addVideoToState={this.addVideoToState}/>
         <div style={{marginTop: 65}}>
           <div 
             style={{

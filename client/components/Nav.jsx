@@ -20,11 +20,13 @@ class Nav extends Component {
   }
 
   render () {
+    console.log(this.props)
     return (
       <header>
         <Modal isOpen={this.state.openModal} toggleModal={this.toggleModal}>
           <p>Please enter a valid YouTube URL...</p>
           <VideoInput
+            addVideoToState={this.props.addVideoToState}
             toggleModal={this.toggleModal} 
             style={{ 
               width: '100%',

@@ -46,6 +46,7 @@ class VideoInput extends Component {
       axios.post('/api/addVideo', {
         data: videoData
       })
+      .then( res => this.props.addVideoToState(res.data[0]) )
       .then( _ => this.props.toggleModal() )
     })
   }
