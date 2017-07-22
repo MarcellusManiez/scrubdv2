@@ -1,0 +1,26 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+        "no-restricted-syntax": 0,
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "no-param-reassign": [0, { "props": false }],
+        "jsx-quotes": ["error", "prefer-single"]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".json"]
+            }
+        }
+    },
+    "globals": {
+        "describe": true,
+        "it": true
+    }
+}
