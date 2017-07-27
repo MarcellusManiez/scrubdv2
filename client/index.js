@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import App from './components/App.jsx';
-import { BrowserRouter as Router } from 'react-router-dom';
-
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import styles from './styles/main.css'; // base styles to remove margin
+import store from './redux_store';
 
 injectTapEventPlugin();
 
 ReactDOM.render(
+
   <MuiThemeProvider>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </MuiThemeProvider>, document.getElementById('root'));
