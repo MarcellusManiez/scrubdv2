@@ -4,10 +4,10 @@ module.exports = {
 
   convertISO8601ToSeconds(input) {
     const reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
-    let hours = 0,
-      minutes = 0,
-      seconds = 0,
-      totalseconds;
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+    let totalseconds;
 
     if (reptms.test(input)) {
       const matches = reptms.exec(input);
@@ -25,11 +25,25 @@ module.exports = {
     let id = string.split('v=')[1];
     const ampersandPosition = id.indexOf('&');
 
-    if (ampersandPosition != -1) {
+    if (ampersandPosition !== -1) {
       id = id.substring(0, ampersandPosition);
     }
 
     return id;
   },
+
+
+  reduceCommentsByTimestamp(arr) {
+    return arr.reduce((all, item) => {
+      if (all[item.comment_timestamp]) {
+        all[item.comment_timestamp].push(item);
+      } else {
+        all[item.comment_timestamp] = [item];
+      }
+
+      return all;
+    }, {});
+  },
+
 
 };

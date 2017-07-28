@@ -14,20 +14,27 @@ class CommentBox extends Component {
       term: '',
     };
 
-    this.submitComment = this.submitComment.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
   }
 
 
-  submitComment() {
-    const timestamp = this.props.getPlayerTime();
-    const user_name = localStorage.getItem('user');
-    const message = this.state.term;
-    const video_id = this.props.video_id;
+  handleSubmit() {
+    const comment = {
+      timestamp: this.props.getPlayerTime(),
+      user_name: localStorage.getItem('user'),
+      message: this.state.term,
+      video_id: this.props.video_id,
+    };
+    // const timestamp = this.props.getPlayerTime();
+    // const user_name = localStorage.getItem('user');
+    // const message = this.state.term;
+    // const video_id = this.props.video_id;
 
-    axios.post('/api/addComment', { user_name, timestamp, message, video_id })
-      .then(c => this.props.addComment(c));
+    // axios.post('/api/addComment', { user_name, timestamp, message, video_id })
+    //   .then(c => this.props.addComment(c));
+    this.props.addComment(comment);
   }
 
   handleTextChange(e) {
@@ -40,7 +47,7 @@ class CommentBox extends Component {
   onKeyPress(e) {
     if (e.charCode === 13) { // enter key pressed
       e.preventDefault();
-      this.submitComment(this.state.term);
+      this.handleSubmit(this.state.term);
       this.setState({ term: '' });
     }
   }
@@ -55,6 +62,7 @@ class CommentBox extends Component {
             style={styles.list_item}
             primaryText={
               <TextField
+                id='modal_textfield'
                 value={this.state.term}
                 onKeyPress={this.onKeyPress}
                 onChange={this.handleTextChange}
@@ -65,7 +73,7 @@ class CommentBox extends Component {
             }
             rightIcon={
               <CommunicationChatBubble
-                onTouchTap={this.submitComment}
+                onTouchTap={this.handleSubmit}
                 color={'#03A9F4'}
                 hoverColor={'blue'}
               />
@@ -91,7 +99,7 @@ class CommentBox extends Component {
               }
               rightIcon={
                 <CommunicationChatBubble
-                  onTouchTap={this.submitComment}
+                  onTouchTap={this.handleSubmit}
                   color={'#03A9F4'}
                   hoverColor={'blue'}
                 />
