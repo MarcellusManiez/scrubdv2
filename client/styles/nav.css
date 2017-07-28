@@ -1,0 +1,77 @@
+.nav {
+  width: 100vw;
+  height: 50px;
+  background-color: #4D4A4A;
+  
+  position: fixed;
+  top: 0;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  z-index: 1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+
+  height: inherit;
+  margin-left: 40px;
+
+  color: white;
+}
+
+.navbar > .nav_item:first-of-type {
+  background-color: skyblue
+}
+
+
+.nav_item {
+  flex-grow: 1;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-left: solid black 2px;
+  height: inherit;
+  cursor: pointer;
+  list-style: none;
+}
+
+.nav_item a {
+  text-decoration: none;
+  color: white
+}
+
+.nav_item a:visited {
+  text-decoration: none;
+  color: white
+}
+
+
+.logo {
+  background-color: skyblue
+}
+
+.nav_item:hover {
+  color: lightgray;
+  background-color: darkslategrey
+}
+
+
+.video_input_box {
+  flex-grow: 3;
+  border-left: solid black 2px;
+  height: inherit;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video_input_Bar {
+  min-width: 90%;
+  line-height: 1.75em;
+  border-radius: 3px;
+  border-style:none;
+}

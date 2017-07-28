@@ -1,3 +1,5 @@
+.DS_Store
+client/youtube_key.js
 node_modules/
 .env
 dist/

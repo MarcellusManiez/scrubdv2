@@ -1,15 +1,47 @@
-import React from 'react';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import MenuItem from 'material-ui/MenuItem';
+import React, { Component } from 'react';
+import VideoInput from './VideoInput.jsx';
+import Modal from './Modal.jsx';
+import NavButtons from './NavButtons.jsx';
+import styles from '../styles/nav.css';
 
-const Nav = () => {
-  return (
-    <Toolbar style={{backgroundColor: '#616161', margin: 0, height: '100px', borderBottom: '8px solid #00B0FF' }}>
-      <ToolbarGroup>
-        <ToolbarTitle text='Scrubd' style={{ fontSize: '2.5em', color: 'white' }} />
-      </ToolbarGroup>
-    </Toolbar>
-  );
-};
+class Nav extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      openModal: false,
+    };
+
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal() {
+    this.setState({ openModal: !this.state.openModal });
+  }
+
+  render() {
+    return (
+      <header>
+        <Modal isOpen={this.state.openModal} toggleModal={this.toggleModal}>
+          <p>Please enter a valid YouTube URL...</p>
+          <VideoInput
+            addVideoToState={this.props.addVideoToState}
+            toggleModal={this.toggleModal}
+            style={{
+              width: '100%',
+              height: '30%',
+              display: 'flex',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+              flexDirection: 'column',
+            }}
+          />
+        </Modal>
+        <NavButtons toggleModal={this.toggleModal} />
+      </header>
+    );
+  }
+}
 
 export default Nav;
+

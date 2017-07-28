@@ -1,3 +1,5 @@
 {
-  "routerPipeline": []
+  "routerPipeline": [
+    "./mount-apis.js"
+  ]
 }

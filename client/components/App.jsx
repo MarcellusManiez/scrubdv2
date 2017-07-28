@@ -1,15 +1,11 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Nav from './Nav.jsx';
+import MainRoutes from './MainRoutes.jsx';
 
-class App extends React.Component {
-  render () {
-    return (
-      <MuiThemeProvider> 
-        <Nav/>
-      </MuiThemeProvider>  
-    );
-  }
-}
+const App = () => (
+  <div>
+    <MainRoutes />
+  </div>
+);
 
 export default App;
+
